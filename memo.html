@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>شوية مماسك</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Arial;
+      background: #f4f7fb;
+      color: #111827;
+      padding: 24px;
+      display: none; /* يخفي الصفحة مؤقتًا حتى يتم التحقق من كلمة المرور */
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #0b63d4;
+    }
+
+    p {
+      color: #6b7280;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .download-btn {
+      background: #0b63d4;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .download-btn:hover {
+      background: #094da6;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 16px;
+      }
+      .card img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>شوية مماسك</h1>
+    <p>مع تمنياتي لكم بالتفوق محبكم مصطفى ابوجميل</p>
+  </header>
+
+  <main>
+    <section class="gallery">
+      <!-- عدّل مسارات الصور حسب مجلدك -->
+      <div class="card">
+        <img src="images/photo1.jpg" alt="صورة 1">
+        <div class="card-body">
+          <button class="download-btn" onclick="downloadImage('images/photo1.jpg')">تحميل</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/photo2.jpg" alt="صورة 2">
+        <div class="card-body">
+          <button class="download-btn" onclick="downloadImage('images/photo2.jpg')">تحميل</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/photo3.jpg" alt="صورة 3">
+        <div class="card-body">
+          <button class="download-btn" onclick="downloadImage('images/photo3.jpg')">تحميل</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="images/photo4.jpg" alt="صورة 4">
+        <div class="card-body">
+          <button class="download-btn" onclick="downloadImage('images/photo4.jpg')">تحميل</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function downloadImage(path) {
+      const a = document.createElement('a');
+      a.href = path;
+      a.download = path.split('/').pop();
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // التحقق من كلمة المرور قبل عرض الصفحة
+    const correctPassword = 'Sseniors2026_2008';
+    const entered = sessionStorage.getItem('auth');
+
+    if (entered === correctPassword) {
+      document.body.style.display = 'block';
+    } else {
+      const pass = prompt('الرجاء إدخال كلمة المرور للوصول إلى صفحة الذكريات:');
+      if (pass === correctPassword) {
+        sessionStorage.setItem('auth', pass);
+        document.body.style.display = 'block';
+      } else {
+        alert('كلمة المرور غير صحيحة!');
+        window.location.href = 'index.html'; // يرجع للصفحة الرئيسية
+      }
+    }
+  </script>
+</body>
+</html>
