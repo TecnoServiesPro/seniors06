@@ -119,7 +119,12 @@
     <h1>Seniors 2026</h1>
     <p>بدون مماسك</p>
   </header>
-
+<div style="text-align: center; margin-top: 50px;">
+  <img src="images/memories_icon.png" alt="ذكريات الصف" 
+       style="width: 150px; cursor: pointer;"
+       onclick="enterMemories()">
+  <p>ذكريات الصف</p>
+</div>
   <main>
     <section class="gallery">
       <!-- عدّل مسارات الصور حسب مجلدك -->
@@ -211,7 +216,16 @@
       </div>
     </section>
   </main>
-
+<script>
+function enterMemories() {
+  const password = prompt("أدخل كلمة المرور للدخول إلى الذكريات:");
+  if (password === "Sseniors2026_2008") {
+    window.location.href = "memories.html";
+  } else if (password !== null) {
+    alert("كلمة المرور غير صحيحة ❌");
+  }
+}
+</script>
   <script>
     function downloadImage(path) {
       const a = document.createElement('a');
@@ -236,6 +250,7 @@
 </body>
 
 </html>
+
 
 
 
